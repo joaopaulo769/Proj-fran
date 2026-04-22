@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Franciene Reis | Estética Especializada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─── */
+:root {
+--bg-dark: #eeece8;
+--bg-mid: #e5e2de;
+--bg-card: #eae8e4;
+--gold: #7a5415;
+--gold-light: #5e3e0e;
+--gold-dim: #c9a14a;
+--text: #1c1c1c;
+--text-soft: rgba(26,20,10,.78);
+--text-faint: rgba(26,20,10,.54);
+--border: rgba(154,110,32,.18);
+--border-s: rgba(154,110,32,.42);
+--glow: rgba(154,110,32,.08);
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:"Nunito Sans",sans-serif;background:var(--bg-dark);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,iframe{max-width:100%}
+a{color:inherit}
+
+.hero-photo-placeholder {
+  position:absolute;inset:0;z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Cormorant Garamond",serif;
+  font-size:1rem;color:rgba(120,90,40,.35);
+  letter-spacing:.2em;text-transform:uppercase;
+  pointer-events:none;
+}
+/* ─── NAV ─── */
+nav{
+position:fixed;top:0;left:0;width:100%;z-index:200;
+display:flex;align-items:center;justify-content:space-between;
+padding:1rem 5vw;
+background:rgba(220,217,212,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+border-bottom:1px solid var(--border);
+}
+.nav-logo{
+font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:700;
+color:#000000;text-decoration:none;line-height:1.25;letter-spacing:.04em;
+white-space:nowrap;
+}
+.nav-logo span{
+display:block;font-family:"Nunito Sans",sans-serif;font-size:.58rem;
+font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#000000;
+}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{
+text-decoration:none;font-size:.72rem;font-weight:600;
+letter-spacing:.18em;text-transform:uppercase;color:#000000;
+transition:color .2s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a.nav-cta{
+background:var(--gold);color:#fff;
+padding:.5rem 1.3rem;font-weight:600;
+transition:background .2s;
+}
+.nav-links a.nav-cta:hover{background:var(--gold-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:.3rem}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--gold);transition:.3s}
+.mobile-menu{
+display:none;position:absolute;top:100%;left:0;right:0;
+background:rgba(220,217,212,.99);border-bottom:1px solid var(--border);
+padding:1.5rem 5vw;flex-direction:column;gap:1.2rem;z-index:198;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+text-decoration:none;font-size:.8rem;font-weight:300;
+letter-spacing:.16em;text-transform:uppercase;color:#1e1e1e;
+transition:color .2s;padding:.4rem 0;border-bottom:1px solid var(--border);
+}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu a:last-child{border-bottom:none}
+
+/* ─── HERO ─── */
+#hero{
+min-height:100vh;position:relative;
+display:flex;align-items:flex-end;
+padding:140px 5vw 8vh;
+overflow:hidden;
+}
+.hero-photo{
+position:absolute;inset:0;z-index:0;
+background:url("herói-fundo.webp") center center / cover no-repeat;
+}
+.hero-photo::after{
+content:"";position:absolute;inset:0;
+background:
+  linear-gradient(to right,
+    rgba(255,255,255,.28) 0%,
+    rgba(255,255,255,.10) 40%,
+    rgba(255,255,255,.0)  70%,
+    rgba(255,255,255,.0)  100%
+  ),
+  linear-gradient(to bottom,
+    rgba(0,0,0,.0)   0%,
+    rgba(0,0,0,.0)   55%,
+    rgba(0,0,0,.35)  85%,
+    rgba(0,0,0,.65)  100%
+  );
+}
+.hero-inner{
+position:relative;z-index:2;
+width:100%;max-width:680px;
+}
+
+.hero-h1{
+font-family:"Cormorant Garamond",serif;
+font-weight:600;line-height:1.08;color:#000000;
+margin-bottom:1.3rem;
+animation:fadeUp .8s .12s ease both;
+font-size:clamp(2.4rem, 5.5vw, 5.2rem);
+}
+.hero-h1 .line-small{
+display:block;
+font-size:.52em;
+letter-spacing:.2em;text-transform:uppercase;
+color:#000000;font-weight:700;
+font-family:"Nunito Sans",sans-serif;
+margin-bottom:.2em;
+}
+.hero-h1 .line-name{
+display:block;
+font-style:italic;color:#000000;
+font-size:1em;font-weight:700;
+}
+.hero-h1 .line-sobrenome{
+display:block;
+font-size:.7em;font-style:normal;
+color:#000000;letter-spacing:.06em;font-weight:400;
+}
+.hero-sub{
+font-size:.95rem;font-weight:700;color:#000000;
+line-height:1.9;max-width:480px;margin-bottom:2.4rem;
+animation:fadeUp .8s .22s ease both;
+text-shadow:none;
+font-family:"Nunito Sans",sans-serif;
+}
+.hero-btns{
+display:flex;gap:1rem;flex-wrap:wrap;
+animation:fadeUp .8s .32s ease both;
+}
+
+/* Botão primário dourado */
+.btn-gold{
+display:inline-flex;align-items:center;gap:.6rem;
+background:var(--gold);color:#fff;
+padding:.85rem 2rem;font-size:.76rem;font-weight:600;
+letter-spacing:.14em;text-transform:uppercase;
+text-decoration:none;transition:background .2s,transform .2s;
+white-space:nowrap;cursor:pointer;border:none;
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+
+/* Botão outline */
+.btn-outline{
+display:inline-flex;align-items:center;gap:.6rem;
+background:#7a5c1e;color:#ffffff;
+border:2px solid #7a5c1e;
+padding:.85rem 2rem;font-size:.76rem;font-weight:600;
+letter-spacing:.14em;text-transform:uppercase;
+text-decoration:none;transition:background .2s,border-color .2s,color .2s,transform .2s;
+white-space:nowrap;
+}
+.btn-outline:hover{background:#5e4614;border-color:#5e4614;color:#fff;transform:translateY(-2px)}
+
+.hero-scroll{
+position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;
+font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;color:#1e1e1e;
+animation:fadeIn 1.4s .8s ease both;
+}
+.hero-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--gold-dim),transparent)}
+
+/* ─── SECTION BASE ─── */
+section{padding:7rem 5vw}
+.s-tag{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.8rem}
+.s-title{
+font-family:"Cormorant Garamond",serif;
+font-size:clamp(2rem,3.8vw,3.5rem);
+font-weight:300;line-height:1.2;color:var(--text);margin-bottom:1.1rem;
+}
+.s-title em{font-style:italic;color:var(--gold-light)}
+.gold-rule{width:52px;height:1px;background:var(--gold);margin:1.6rem 0;position:relative}
+.gold-rule::after{content:"◆";position:absolute;top:-6px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.4rem}
+
+/* ─── SOBRE ─── */
+#sobre{background:var(--bg-mid)}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.sobre-text p{font-size:.95rem;font-weight:400;line-height:2;color:var(--text);margin-bottom:1.2rem}
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:2.2rem}
+.pillar{padding:1.3rem 1.5rem;border-left:2px solid var(--gold-dim);background:rgba(154,110,32,.06)}
+.pillar h4{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.3rem}
+.pillar p{font-size:.79rem;color:#1e1e1e;font-weight:400;line-height:1.6}
+.sobre-card{background:#e2e0db;border:1px solid var(--border);padding:3rem 2.6rem;position:relative;overflow:hidden}
+.sobre-card::before{
+content:"FR";position:absolute;bottom:-.5rem;right:-.5rem;
+font-family:"Cormorant Garamond",serif;font-size:9rem;font-weight:300;
+color:rgba(154,110,32,.07);line-height:1;pointer-events:none;
+}
+.sobre-card h3{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:300;color:var(--gold-light);margin-bottom:.9rem}
+.sobre-card p{font-size:.9rem;font-weight:400;color:var(--text);line-height:1.95}
+
+/* ─── TRATAMENTOS ─── */
+#tratamentos{background:var(--bg-dark)}
+.trat-header{text-align:center;max-width:580px;margin:0 auto 3.5rem}
+.trat-header .gold-rule{margin:1.4rem auto}
+.trat-header p{font-size:.88rem;color:#1e1e1e;font-weight:300;line-height:1.8}
+.trat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.trat-card{
+background:var(--bg-mid);padding:2.6rem 1.8rem;
+position:relative;overflow:hidden;cursor:default;
+transition:background .3s,transform .3s;
+}
+.trat-card:hover{background:var(--bg-card);transform:translateY(-4px)}
+.trat-num{position:absolute;bottom:1rem;right:1.5rem;
+font-family:"Cormorant Garamond",serif;font-size:4.5rem;font-weight:300;
+color:rgba(154,110,32,.08);line-height:1;transition:color .3s}
+.trat-card:hover .trat-num{color:rgba(154,110,32,.14)}
+.trat-icon{width:46px;height:46px;border:1px solid var(--border-s);
+display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:1.5rem}
+.trat-title{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:500;
+color:var(--gold-light);margin-bottom:.6rem;line-height:1.25}
+.trat-desc{font-size:.82rem;font-weight:400;color:var(--text);line-height:1.85}
+
+/* ─── DIFERENCIAIS ─── */
+#diferenciais{background:var(--bg-mid)}
+.dif-grid{display:grid;grid-template-columns:1fr 1fr;gap:7vw;align-items:center}
+.dif-intro p{font-size:.92rem;font-weight:400;color:var(--text);line-height:1.9}
+.dif-list{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin-top:2rem}
+.dif-list li{display:flex;align-items:center;gap:1rem;
+font-size:.88rem;font-weight:500;color:var(--text);
+padding-bottom:.9rem;border-bottom:1px solid rgba(154,110,32,.12)}
+.dif-check{width:26px;height:26px;flex-shrink:0;border:1px solid var(--gold);
+display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.65rem}
+.dif-panels{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.dif-panel{background:var(--bg-dark);border:1px solid transparent;padding:2rem 1.8rem;
+transition:background .3s,border-color .3s}
+.dif-panel:hover{background:var(--bg-card);border-color:var(--border-s)}
+.dif-panel-icon{font-size:1.4rem;margin-bottom:.8rem}
+.dif-panel h4{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:400;
+color:var(--gold-light);margin-bottom:.35rem}
+.dif-panel p{font-size:.79rem;color:#1e1e1e;font-weight:400;line-height:1.7}
+
+/* ─── RESULTADOS ─── */
+#resultados{background:var(--bg-dark)}
+.res-header{display:flex;justify-content:space-between;align-items:flex-end;
+margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.res-item{background:var(--bg-mid);aspect-ratio:3/4;position:relative;overflow:hidden;cursor:pointer}
+.res-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.res-item:hover img{transform:scale(1.04)}
+.res-item:hover .res-overlay{opacity:1}
+.res-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:.9rem}
+.res-icon{font-size:2.2rem;opacity:.18}
+.res-label{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#1e1e1e;font-weight:300}
+.res-overlay{position:absolute;inset:0;background:rgba(220,217,212,.97);
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:.7rem;opacity:0;transition:opacity .3s;padding:2rem}
+.res-overlay span{font-family:"Cormorant Garamond",serif;font-size:1.05rem;
+color:var(--gold-light);text-align:center;font-weight:300}
+.res-overlay small{font-size:.65rem;color:#1e1e1e;letter-spacing:.16em;text-transform:uppercase}
+.res-badge{position:absolute;top:.9rem;left:.9rem;z-index:2;
+background:var(--gold);color:#fff;
+font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;
+padding:.28rem .75rem;font-weight:600}
+
+/* Botão remover foto */
+.res-remove-btn{
+position:absolute;top:.9rem;right:.9rem;z-index:3;
+background:rgba(180,40,40,.85);color:#fff;border:none;
+width:26px;height:26px;cursor:pointer;font-size:.8rem;
+display:none;align-items:center;justify-content:center;
+transition:background .2s;
+}
+.res-remove-btn:hover{background:rgba(220,40,40,1)}
+.admin-mode .res-remove-btn{display:flex}
+
+/* ─── DEPOIMENTOS ─── */
+#depoimentos{background:var(--bg-mid)}
+.dep-grid{display:grid;grid-template-columns:1fr 2fr;gap:6vw;align-items:start}
+.dep-intro p{font-size:.92rem;font-weight:400;color:var(--text);line-height:1.8}
+.dep-cards{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.dep-card{background:var(--bg-dark);padding:2.2rem 1.8rem;
+border-bottom:2px solid transparent;transition:border-color .3s,background .3s}
+.dep-card:hover{border-color:var(--gold);background:var(--bg-card)}
+.stars{color:var(--gold);font-size:.85rem;margin-bottom:1rem;letter-spacing:.1em}
+.dep-card blockquote{font-family:"Cormorant Garamond",serif;font-size:1.08rem;
+font-style:italic;color:var(--text);line-height:1.8;margin-bottom:1rem;font-weight:400}
+.dep-author{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:300}
+
+/* ─── CONTATO ─── */
+#contato{background:var(--bg-dark)}
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw}
+.c-items{display:flex;flex-direction:column;gap:1.3rem;margin-bottom:2.4rem}
+.c-item{display:flex;align-items:center;gap:1.1rem}
+.c-icon{width:40px;height:40px;flex-shrink:0;border:1px solid var(--border-s);
+display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.c-item-text strong{display:block;font-size:.7rem;font-weight:600;
+letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.18rem}
+.c-item-text span{font-size:.86rem;font-weight:400;color:var(--text)}
+.social-row{display:flex;gap:.9rem}
+.soc-link{width:42px;height:42px;border:1px solid var(--border);
+display:flex;align-items:center;justify-content:none;
+text-decoration:none;font-size:1.05rem;transition:background .2s,border-color .2s}
+.soc-link:hover{background:var(--glow);border-color:var(--gold)}
+.horario{background:#e2e0db;border:1px solid var(--border);padding:1.8rem;margin-top:1.8rem}
+.horario h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem}
+.horario-row{display:flex;justify-content:space-between;padding:.65rem 0;
+border-bottom:1px solid rgba(154,110,32,.1);font-size:.84rem;font-weight:400;color:var(--text)}
+.horario-row:last-child{border-bottom:none}
+.mapa{border:1px solid var(--border);overflow:hidden;position:relative}
+.mapa iframe{width:100%;height:100%;min-height:360px;border:none;
+filter:grayscale(40%) brightness(.95) sepia(10%);display:block}
+.mapa-label{position:absolute;bottom:.9rem;left:.9rem;
+background:var(--gold);color:#fff;
+font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+padding:.35rem .9rem;font-weight:600}
+
+/* ─── FOOTER ─── */
+footer{background:#d8d5d0;padding:2.2rem 5vw;
+display:flex;align-items:center;justify-content:space-between;
+flex-wrap:wrap;gap:.8rem;border-top:1px solid var(--border)}
+.f-logo{font-family:"Cormorant Garamond",serif;font-size:1rem;font-weight:300;color:var(--text)}
+.f-logo span{display:block;font-family:"Nunito Sans",sans-serif;font-size:.56rem;
+letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);margin-top:.2rem}
+footer p{font-size:.72rem;font-weight:400;color:#1e1e1e;letter-spacing:.07em}
+
+/* ─── WA FLOAT ─── */
+.wa-float{position:fixed;bottom:1.8rem;right:1.8rem;z-index:300;
+width:56px;height:56px;border-radius:50%;background:#25d366;
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 4px 22px rgba(37,211,102,.45);text-decoration:none;font-size:1.5rem;
+transition:transform .25s,box-shadow .25s}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(37,211,102,.6)}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn {from{opacity:0}to{opacity:1}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── FORM AVALIAÇÃO ─── */
+.dep-form-wrap{margin-top:2rem;padding:1.6rem 1.8rem;background:var(--bg-card);border:1px solid var(--border);}
+.dep-form-title{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:400}
+.dep-form-stars{display:flex;gap:.3rem;margin-bottom:1rem;cursor:pointer}
+.dep-star{font-size:1.6rem;color:#ccc;transition:color .15s;line-height:1;user-select:none}
+.dep-star.ativo{color:var(--gold)}
+.dep-form-input{
+  width:100%;padding:.6rem .9rem;box-sizing:border-box;
+  background:#f5f2ed;border:1px solid var(--border);
+  color:var(--text);font-family:inherit;font-size:.84rem;
+  outline:none;margin-bottom:.7rem;
+  transition:border-color .2s;
+}
+.dep-form-input:focus{border-color:var(--gold)}
+.dep-form-textarea{resize:none;line-height:1.6}
+.dep-form-input::placeholder{color:#aaa;font-style:italic}
+.dep-form-count{font-size:.65rem;color:#1e1e1e;text-align:right;margin-top:-.4rem;margin-bottom:.8rem;letter-spacing:.05em}
+.dep-form-btn{width:100%;justify-content:center;margin-top:.2rem;padding:.75rem 1rem;font-size:.72rem}
+.dep-form-msg{font-size:.74rem;margin-top:.7rem;text-align:center;min-height:1.2rem;font-style:italic}
+.dep-form-msg.ok{color:#4a7c3f}
+.dep-form-msg.erro{color:#b03030}
+.dep-card-new{border-left:2px solid var(--gold);animation:fadeUp .5s ease both}
+
+
+.modal-overlay{
+position:fixed;inset:0;z-index:99999;
+background:rgba(0,0,0,.85);
+display:flex;align-items:center;justify-content:center;
+}
+.modal-box{
+background:#fff;
+border:1px solid var(--gold);
+padding:40px 48px;
+min-width:340px;
+text-align:center;
+font-family:"Nunito Sans",sans-serif;
+}
+.modal-title{color:var(--gold);font-size:1.1rem;letter-spacing:2px;margin-bottom:8px;font-weight:300}
+.modal-sub{color:#1e1e1e;font-size:.72rem;letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.modal-input{
+width:100%;padding:10px 14px;box-sizing:border-box;
+background:#f8f4ef;border:1px solid var(--gold-dim);
+color:var(--text);font-size:.88rem;letter-spacing:2px;
+outline:none;margin-bottom:8px;font-family:inherit;
+transition:border-color .2s;
+}
+.modal-input:focus{border-color:var(--gold)}
+.modal-erro{color:#c0392b;font-size:.72rem;min-height:18px;margin-bottom:12px}
+.modal-btns{display:flex;gap:10px;justify-content:center}
+.modal-btn-confirm{
+background:var(--gold);color:#fff;border:none;
+padding:10px 32px;font-size:.72rem;letter-spacing:2px;
+cursor:pointer;font-weight:700;font-family:inherit;text-transform:uppercase;
+transition:background .2s;
+}
+.modal-btn-confirm:hover{background:var(--gold-light)}
+.modal-btn-cancel{
+background:transparent;color:#1e1e1e;border:1px solid var(--border-s);
+padding:10px 20px;font-size:.72rem;letter-spacing:2px;
+cursor:pointer;font-family:inherit;text-transform:uppercase;
+transition:border-color .2s,color .2s;
+}
+.modal-btn-cancel:hover{border-color:var(--border-s);color:var(--text)}
+
+/* ─── MODAL GERENCIAR FOTOS ─── */
+.modal-fotos-overlay{
+position:fixed;inset:0;z-index:99998;
+background:rgba(0,0,0,.92);
+display:flex;align-items:center;justify-content:center;
+padding:2rem;
+}
+.modal-fotos-box{
+background:var(--bg-mid);
+border:1px solid var(--border-s);
+width:100%;max-width:800px;
+max-height:90vh;
+overflow-y:auto;
+padding:2.5rem;
+}
+.modal-fotos-header{
+display:flex;justify-content:space-between;align-items:center;
+margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);
+}
+.modal-fotos-title{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:300;color:var(--gold-light)}
+.modal-fotos-close{
+background:transparent;border:1px solid var(--border);color:#1e1e1e;
+width:36px;height:36px;cursor:pointer;font-size:1.1rem;
+display:flex;align-items:center;justify-content:center;
+transition:border-color .2s,color .2s;
+}
+.modal-fotos-close:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Upload area */
+.upload-area{
+border:1px dashed var(--gold-dim);
+padding:3rem 2rem;text-align:center;
+cursor:pointer;transition:border-color .2s,background .2s;
+margin-bottom:2rem;position:relative;
+}
+.upload-area:hover,.upload-area.drag-over{border-color:var(--gold);background:rgba(201,161,74,.04)}
+.upload-area input[type=file]{
+position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;
+}
+.upload-icon{font-size:2rem;margin-bottom:.8rem;opacity:.5}
+.upload-text{font-size:.82rem;color:#1e1e1e;font-weight:300;line-height:1.7}
+.upload-text strong{color:var(--gold-light);font-weight:400}
+
+/* Categoria select */
+.upload-categoria{
+display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap;
+}
+.cat-btn{
+background:transparent;border:1px solid var(--border);color:#1e1e1e;
+padding:.45rem 1.1rem;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+cursor:pointer;font-family:inherit;transition:all .2s;
+}
+.cat-btn.ativo{background:var(--gold);color:var(--bg-dark);border-color:var(--gold);font-weight:600}
+.cat-btn:hover:not(.ativo){border-color:var(--border-s);color:var(--text)}
+
+/* Preview fotos no modal */
+.fotos-preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:1.5rem}
+.preview-item{aspect-ratio:3/4;position:relative;overflow:hidden;background:var(--bg-card)}
+.preview-item img{width:100%;height:100%;object-fit:cover;display:block}
+.preview-remove{
+position:absolute;top:6px;right:6px;
+background:rgba(180,40,40,.9);color:#fff;border:none;
+width:24px;height:24px;cursor:pointer;font-size:.75rem;
+display:flex;align-items:center;justify-content:center;
+transition:background .2s;
+}
+.preview-remove:hover{background:rgb(220,40,40)}
+.preview-cat-label{
+position:absolute;bottom:0;left:0;right:0;
+background:rgba(14,12,10,.8);
+font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
+color:var(--gold);padding:.3rem .5rem;text-align:center;
+}
+.preview-legenda-wrap{
+margin-top:.5rem;
+}
+.preview-legenda-input{
+width:100%;padding:.45rem .6rem;box-sizing:border-box;
+background:#f0ede8;border:1px solid var(--gold-dim);
+color:var(--text);font-size:.75rem;font-family:inherit;
+outline:none;resize:none;
+transition:border-color .2s;
+}
+.preview-legenda-input:focus{border-color:var(--gold)}
+.preview-legenda-input::placeholder{color:#aaa;font-style:italic}
+
+.modal-fotos-salvar{
+display:flex;justify-content:flex-end;gap:1rem;
+margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);
+}
+
+/* Aviso admin mode ativo */
+.admin-badge{
+display:none;
+position:fixed;top:80px;right:1.5rem;z-index:300;
+background:var(--gold);color:var(--bg-dark);
+font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+padding:.3rem .9rem;font-weight:700;
+}
+.admin-badge.visible{display:block}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+.nav-links{display:none}
+.hamburger{display:flex}
+#hero{padding-top:100px;padding-bottom:6vh;align-items:flex-end}
+.hero-h1{font-size:clamp(2.2rem,8vw,3.8rem)}
+.sobre-grid,.dif-grid,.contato-grid,.dep-grid{grid-template-columns:1fr;gap:3rem}
+.trat-grid{grid-template-columns:1fr 1fr}
+.res-grid{grid-template-columns:1fr 1fr}
+.dep-cards{grid-template-columns:1fr}
+.dif-panels{grid-template-columns:1fr}
+.pillars{grid-template-columns:1fr}
+.mapa{min-height:280px}
+}
+@media(max-width:600px){
+section{padding:4.5rem 5vw}
+.trat-grid{grid-template-columns:1fr}
+.res-grid{grid-template-columns:1fr}
+.dep-cards{grid-template-columns:1fr}
+.hero-btns{flex-direction:column;align-items:flex-start}
+.btn-gold,.btn-outline{width:100%;justify-content:center}
+.hero-badge{font-size:.52rem;letter-spacing:.14em;padding:.3rem .7rem;margin-bottom:1rem}
+.hero-sub{font-size:.8rem;margin-bottom:1.6rem}
+#hero{padding-bottom:8vh}
+.modal-box{padding:28px 20px;min-width:unset;width:90vw}
+.modal-fotos-box{padding:1.5rem}
+.fotos-preview-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ─── BARRA HERO TOPO ─── */
+
+
+/* ─── HERO TOPBAR ─── */
+.hero-topbar{
+position:absolute;top:72px;left:0;right:0;
+z-index:10;
+display:flex;align-items:center;justify-content:center;
+padding:.6rem 0;
+font-size:.65rem;font-weight:700;
+letter-spacing:.28em;text-transform:uppercase;
+color:#000000;text-shadow:none;
+}
+
+/* excluir dep */
+.dep-card{position:relative;}
+.dep-del-card{
+  position:absolute;top:.5rem;right:.5rem;
+  background:rgba(200,40,40,.85);color:#fff;border:none;
+  width:24px;height:24px;cursor:pointer;font-size:.65rem;
+  display:none;align-items:center;justify-content:center;
+  transition:background .2s;border-radius:2px;font-family:inherit;
+}
+.dep-del-card:hover{background:rgb(220,30,30);}
+body.dep-admin-mode .dep-del-card{display:flex;}
+body.dep-admin-mode .dep-card{padding-right:2.2rem;}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    Dra. Franciene Reis
+    <span>Estética &amp; Saúde Integrativa</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#tratamentos">Tratamentos</a></li>
+    <li><a href="#diferenciais">Diferenciais</a></li>
+    <li><a href="#resultados">Resultados</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato" class="nav-cta">Contato</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#sobre" onclick="closeMenu()">Sobre</a>
+    <a href="#tratamentos" onclick="closeMenu()">Tratamentos</a>
+    <a href="#diferenciais" onclick="closeMenu()">Diferenciais</a>
+    <a href="#resultados" onclick="closeMenu()">Resultados</a>
+    <a href="#depoimentos" onclick="closeMenu()">Depoimentos</a>
+    <a href="#contato" onclick="closeMenu()" style="color:var(--gold)">Contato</a>
+  </nav>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+
+  <div class="hero-topbar">
+    ✦ &nbsp;Beleza &nbsp;|&nbsp; Ciência &nbsp;|&nbsp; Harmonia&nbsp; ✦
+  </div>
+
+  <div class="hero-photo">
+  </div>
+  <div class="hero-inner">
+
+    <h1 class="hero-h1">
+      <span class="line-small"></span>
+      <span class="line-name">Dra. Franciene</span>
+      <span class="line-sobrenome">Reis</span>
+    </h1>
+    <p class="hero-sub">
+      Estética Especializada, Saúde Integrativa e Ozonioterapia. Tratamentos avançados em ambiente sofisticado, com protocolos baseados em ciência para resultados naturais e elegantes.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5521972643796?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Voc%C3%AA%20entrou%20em%20contato%20com%20a%20Est%C3%A9tica%20Especializada%20da%20Dra.%20Franciene%20Reis%0A%C3%89%20um%20prazer%20te%20atender.%20Em%20que%20posso%20te%20ajudar%20hoje%3F" target="_blank" class="btn-gold">📲 Agendar Avaliação</a>
+      <a href="https://wa.me/5521972643796?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Voc%C3%AA%20entrou%20em%20contato%20com%20a%20Est%C3%A9tica%20Especializada%20da%20Dra.%20Franciene%20Reis%0A%C3%89%20um%20prazer%20te%20atender.%20Em%20que%20posso%20te%20ajudar%20hoje%3F" target="_blank" class="btn-outline"><img src="ícone-whatsapp.png" width="22" height="22" style="vertical-align:middle;border-radius:50%;" alt="WhatsApp"> Falar no WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    role
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-text reveal">
+      <span class="s-tag">✦ Sobre a Clínica</span>
+      <h2 class="s-title">Onde a ciência encontra a <em>beleza</em></h2>
+      <div class="gold-rule"></div>
+      <p>A Clínica Dra. Franciene Reis foi criada com o propósito de unir estética avançada, ciência e saúde integrativa. Cada paciente recebe uma avaliação personalizada e completa.</p>
+      <p>Nosso objetivo é proporcionar resultados naturais, elegantes e seguros, elevando a autoestima e o bem-estar de cada paciente que nos confia sua saúde estética.</p>
+      <div class="pillars">
+        <div class="pillar"><h4>Proporção Facial</h4><p>Análise das proporções para harmonia natural</p></div>
+        <div class="pillar"><h4>Análise Estética</h4><p>Avaliação técnica individualizada</p></div>
+        <div class="pillar"><h4>Equilíbrio Corporal</h4><p>Protocolos de contorno e firmeza</p></div>
+        <div class="pillar"><h4>Saúde Metabólica</h4><p>Integração de nutrição e bem-estar</p></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="sobre-card">
+        <h3>Nossa Filosofia</h3>
+        <p>Acreditamos que a verdadeira estética vai além da aparência. Cada procedimento é cuidadosamente planejado para respeitar a individualidade do paciente, utilizando as técnicas mais modernas e seguras disponíveis na medicina estética contemporânea.</p>
+        <br>
+        <p>A ozonioterapia e a saúde integrativa compõem nossa abordagem holística, potencializando os resultados de forma natural e duradoura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRATAMENTOS -->
+<section id="tratamentos">
+  <div class="trat-header reveal">
+    <span class="s-tag">✦ Tratamentos</span>
+    <h2 class="s-title">Procedimentos <em>avançados</em></h2>
+    <div class="gold-rule"></div>
+    <p>Cada tratamento é personalizado com protocolos baseados em evidências científicas, respeitando a individualidade de cada paciente.</p>
+  </div>
+  <div class="trat-grid reveal">
+    <div class="trat-card">
+      <div class="trat-num">01</div>
+      <div class="trat-icon">✦</div>
+      <h3 class="trat-title">Harmonização Facial</h3>
+      <p class="trat-desc">Equilíbrio das proporções do rosto através de técnicas modernas de estética avançada, respeitando a singularidade de cada paciente.</p>
+    </div>
+    <div class="trat-card">
+      <div class="trat-num">02</div>
+      <div class="trat-icon">◈</div>
+      <h3 class="trat-title">Harmonização Corporal</h3>
+      <p class="trat-desc">Procedimentos voltados para melhorar contorno corporal, firmeza da pele e remodelação estética com segurança e precisão.</p>
+    </div>
+    <div class="trat-card">
+      <div class="trat-num">03</div>
+      <div class="trat-icon">⟡</div>
+      <h3 class="trat-title">Otomodelação Sem Corte</h3>
+      <p class="trat-desc">Tecnologias modernas de remodelação corporal sem cirurgia e sem cortes, com resultados notáveis e recuperação rápida.</p>
+    </div>
+    <div class="trat-card">
+      <div class="trat-num">04</div>
+      <div class="trat-icon">◉</div>
+      <h3 class="trat-title">Saúde Integrativa</h3>
+      <p class="trat-desc">Abordagem que une estética, metabolismo, nutrição, ozonioterapia e bem-estar para resultados holísticos e duradouros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="dif-grid">
+    <div class="reveal">
+      <span class="s-tag">✦ Nossos Diferenciais</span>
+      <h2 class="s-title">Por que escolher a <em>Clínica Dra. Franciene Reis</em></h2>
+      <div class="gold-rule"></div>
+      <div class="dif-intro"><p>A excelência em cada detalhe é o nosso compromisso — desde o primeiro contato até os resultados finais.</p></div>
+      <ul class="dif-list">
+        <li><span class="dif-check">✓</span> Avaliação baseada em ciência estética</li>
+        <li><span class="dif-check">✓</span> Técnicas modernas e seguras</li>
+        <li><span class="dif-check">✓</span> Atendimento personalizado e humanizado</li>
+        <li><span class="dif-check">✓</span> Ambiente sofisticado e acolhedor</li>
+        <li><span class="dif-check">✓</span> Resultados naturais e duradouros</li>
+      </ul>
+    </div>
+    <div class="dif-panels reveal">
+      <div class="dif-panel"><div class="dif-panel-icon">🔬</div><h4>Base Científica</h4><p>Todos os protocolos são fundamentados em evidências científicas e estudos clínicos atualizados.</p></div>
+      <div class="dif-panel"><div class="dif-panel-icon">💎</div><h4>Sofisticação</h4><p>Ambiente premium projetado para oferecer conforto e privacidade durante todo o tratamento.</p></div>
+      <div class="dif-panel"><div class="dif-panel-icon">✨</div><h4>Ozonioterapia</h4><p>Terapia com ozônio medicinal para regeneração celular, desintoxicação e potencialização de resultados.</p></div>
+      <div class="dif-panel"><div class="dif-panel-icon">🌿</div><h4>Visão Integrativa</h4><p>Cuidado completo que une estética, saúde metabólica, nutrição e bem-estar emocional.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="resultados">
+  <div class="res-header reveal">
+    <div>
+      <span class="s-tag">✦ Resultados</span>
+      <h2 class="s-title">Transformações <em>reais</em></h2>
+    </div>
+    <!-- ✅ BOTÃO GERENCIAR FOTOS COM PROTEÇÃO POR SENHA -->
+    <button class="btn-gold" id="btnGerenciarFotos" style="flex-shrink:0;align-self:flex-end">
+      ✦ GERENCIAR FOTOS
+    </button>
+  </div>
+
+  <div class="res-grid reveal" id="resGrid">
+    <!-- As fotos são renderizadas aqui pelo JavaScript -->
+    <div class="res-item" data-categoria="facial" data-id="placeholder-1">
+      <div class="res-badge">Antes &amp; Depois</div>
+      <div class="res-placeholder"><div class="res-icon">✦</div><span class="res-label">Harmonização Facial</span></div>
+      <div class="res-overlay"><span>Harmonização Facial</span><small>Resultado Natural</small></div>
+      <button class="res-remove-btn" title="Remover foto">✕</button>
+    </div>
+    <div class="res-item" data-categoria="corporal" data-id="placeholder-2">
+      <div class="res-badge">Evolução</div>
+      <div class="res-placeholder"><div class="res-icon">◈</div><span class="res-label">Harmonização Corporal</span></div>
+      <div class="res-overlay"><span>Harmonização Corporal</span><small>Contorno Refinado</small></div>
+      <button class="res-remove-btn" title="Remover foto">✕</button>
+    </div>
+    <div class="res-item" data-categoria="ozonioterapia" data-id="placeholder-3">
+      <div class="res-badge">Antes &amp; Depois</div>
+      <div class="res-placeholder"><div class="res-icon">⟡</div><span class="res-label">Ozonioterapia</span></div>
+      <div class="res-overlay"><span>Saúde Integrativa</span><small>Bem-Estar Total</small></div>
+      <button class="res-remove-btn" title="Remover foto">✕</button>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:1.8rem;font-size:.75rem;color:#1e1e1e;letter-spacing:.12em;">
+    ✦ Fotos reais de pacientes com autorização &nbsp;·&nbsp; Resultados individuais podem variar
+  </p>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="dep-grid">
+    <div class="reveal">
+      <span class="s-tag">✦ Depoimentos</span>
+      <h2 class="s-title">O que dizem nossas <em>pacientes</em></h2>
+      <div class="gold-rule"></div>
+      <div class="dep-intro"><p>A satisfação de cada paciente é o maior reconhecimento do nosso trabalho e dedicação.</p></div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:.8rem;">
+      <button class="btn-gold" id="btnModoExcluir" style="font-size:.63rem;padding:.5rem 1.1rem;">
+        ✦ EXCLUIR DEPOIMENTOS
+      </button>
+    </div>
+    <div class="dep-cards reveal" id="depCards" data-admin="0">
+      <div class="dep-card" data-dep="2">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"Profissional extremamente cuidadosa e resultados incríveis. Superou todas as minhas expectativas."</blockquote>
+        <div class="dep-author">— Paciente Satisfeita</div>
+        <button class="dep-del-card" onclick="excluirDep(this)" title="Excluir">✕</button>
+      </div>
+      <div class="dep-card" data-dep="3">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"Clínica linda e atendimento impecável. Me senti acolhida desde o primeiro momento."</blockquote>
+        <div class="dep-author">— Paciente Fidelizada</div>
+        <button class="dep-del-card" onclick="excluirDep(this)" title="Excluir">✕</button>
+      </div>
+      <div class="dep-card" data-dep="4">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"Os resultados foram naturais e exatamente o que eu desejava. Recomendo de olhos fechados."</blockquote>
+        <div class="dep-author">— Paciente da Clínica</div>
+        <button class="dep-del-card" onclick="excluirDep(this)" title="Excluir">✕</button>
+      </div>
+      <div class="dep-card" data-dep="5">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <blockquote>"A abordagem integrativa fez toda a diferença. Não é só estética, é saúde de verdade."</blockquote>
+        <div class="dep-author">— Paciente Dedicada</div>
+        <button class="dep-del-card" onclick="excluirDep(this)" title="Excluir">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO DE AVALIAÇÃO -->
+  <div class="dep-form-wrap reveal" style="max-width:600px;margin:3rem auto 0;">
+    <p class="dep-form-title">✦ Deixe sua avaliação</p>
+    <div class="dep-form-stars" id="formStars">
+      <span class="dep-star" data-v="1">★</span>
+      <span class="dep-star" data-v="2">★</span>
+      <span class="dep-star" data-v="3">★</span>
+      <span class="dep-star" data-v="4">★</span>
+      <span class="dep-star" data-v="5">★</span>
+    </div>
+    <input type="text" class="dep-form-input" id="depNome" placeholder="Seu nome (opcional)" maxlength="60">
+    <textarea class="dep-form-input dep-form-textarea" id="depTexto" placeholder="Escreva sua experiência..." maxlength="400" rows="3"></textarea>
+    <div class="dep-form-count"><span id="depCount">0</span>/400</div>
+    <button class="btn-gold dep-form-btn" id="btnEnviarDep">Enviar avaliação →</button>
+    <p class="dep-form-msg" id="depMsg"></p>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-grid">
+    <div class="reveal">
+      <span class="s-tag">✦ Contato</span>
+      <h2 class="s-title">Agende sua <em>avaliação</em></h2>
+      <div class="gold-rule"></div>
+      <p style="font-size:.92rem;font-weight:400;color:var(--text);line-height:1.85;margin-bottom:2.2rem;">Entre em contato e dê o primeiro passo para a sua transformação. Atendimento personalizado, humanizado e baseado em ciência.</p>
+      <div class="c-items">
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div class="c-item-text"><strong>Localização</strong><span>Manaus — Amazonas — Rio de Janeiro RJ</span></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon"><img src="ícone-whatsapp.png" width="26" height="26" alt="WhatsApp"></div>
+          <div class="c-item-text"><strong>WhatsApp</strong><span>(92) 9 ____-____</span></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon"><img src="ícone-instagram.png" width="26" height="26" alt="Instagram"></div>
+          <div class="c-item-text"><strong>Instagram</strong><span>@drafrancienereis</span></div>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="https://wa.me/5521972643796?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Voc%C3%AA%20entrou%20em%20contato%20com%20a%20Est%C3%A9tica%20Especializada%20da%20Dra.%20Franciene%20Reis%0A%C3%89%20um%20prazer%20te%20atender.%20Em%20que%20posso%20te%20ajudar%20hoje%3F" target="_blank" class="soc-link" title="WhatsApp"><img src="whatsapp.png" width="28" height="28" alt="WhatsApp"></a>
+        <a href="https://www.instagram.com/drafrancienereis/" target="_blank" class="soc-link" title="Instagram"><img src="instagram.png" width="28" height="28" alt="Instagram"></a>
+      </div>
+      <div class="horario">
+        <h4>🕒 Horário de Atendimento</h4>
+        <div class="horario-row"><span>Segunda — Sexta</span><span>08:00 – 18:00</span></div>
+        <div class="horario-row"><span>Sábado</span><span>09:00 – 13:00</span></div>
+        <div class="horario-row"><span>Domingo</span><span>Fechado</span></div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:row;gap:.8rem;">
+      <!-- Manaus -->
+      <div class="mapa reveal" style="flex:1;height:200px;cursor:pointer;overflow:hidden;position:relative;"
+           onclick="window.open('https://www.google.com/maps/dir/?api=1&destination=Rua+Sobrinho+Maranh%C3%A3o,+310,+S%C3%A3o+Francisco,+Manaus+AM,+69079-210,+Brasil','_blank')">
+        <img
+          src="https://staticmap.openstreetmap.de/staticmap.php?center=-3.0983,-59.9903&zoom=14&size=600x200&markers=-3.0983,-59.9903,red-pushpin"
+          alt="Mapa Manaus"
+          style="width:100%;height:100%;object-fit:cover;filter:grayscale(40%) brightness(.95) sepia(10%);display:block;"
+          onerror="this.style.display='none';this.parentNode.querySelector('.map-fallback').style.display='flex'">
+        <div class="map-fallback" style="display:none;width:100%;height:100%;background:#e8e3da;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9a7a3a" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span style="font-size:.65rem;letter-spacing:.15em;color:#9a7a3a;font-family:'Nunito Sans',sans-serif;">MANAUS, AM</span>
+          <span style="font-size:.6rem;color:#666;font-family:'Nunito Sans',sans-serif;">Clique para abrir no Maps</span>
+        </div>
+        <div class="mapa-label">📍 Manaus, AM</div>
+      </div>
+      <!-- Rio de Janeiro -->
+      <div class="mapa reveal" style="flex:1;height:200px;cursor:pointer;overflow:hidden;position:relative;"
+           onclick="window.open('https://www.google.com/maps/search/?api=1&query=Rio+de+Janeiro,+RJ','_blank')">
+        <img
+          src="https://staticmap.openstreetmap.de/staticmap.php?center=-22.9068,-43.1729&zoom=11&size=600x200"
+          alt="Mapa Rio de Janeiro"
+          style="width:100%;height:100%;object-fit:cover;filter:grayscale(40%) brightness(.95) sepia(10%);display:block;"
+          onerror="this.style.display='none';this.parentNode.querySelector('.map-fallback').style.display='flex'">
+        <div class="map-fallback" style="display:none;width:100%;height:100%;background:#e8e3da;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9a7a3a" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span style="font-size:.65rem;letter-spacing:.15em;color:#9a7a3a;font-family:'Nunito Sans',sans-serif;">RIO DE JANEIRO, RJ</span>
+          <span style="font-size:.6rem;color:#666;font-family:'Nunito Sans',sans-serif;">Clique para abrir no Maps</span>
+        </div>
+        <div class="mapa-label">📍 Rio de Janeiro, RJ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">
+    Dra. Franciene Reis
+    <span>Estética Especializada · Saúde Integrativa · Ozonioterapia</span>
+  </div>
+  <p>© 2025 Dra. Franciene Reis — Todos os direitos reservados</p>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/5521972643796?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Voc%C3%AA%20entrou%20em%20contato%20com%20a%20Est%C3%A9tica%20Especializada%20da%20Dra.%20Franciene%20Reis%0A%C3%89%20um%20prazer%20te%20atender.%20Em%20que%20posso%20te%20ajudar%20hoje%3F" target="_blank" class="wa-float" title="WhatsApp"><img src="whatsapp.png" width="30" height="30" alt="WhatsApp"></a>
+
+<!-- Badge modo admin -->
+<div class="admin-badge" id="adminBadge">✦ Modo Admin</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL SENHA
+═══════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalSenha" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">✦ ÁREA RESTRITA</div>
+    <div class="modal-sub">Insira a senha para gerenciar fotos</div>
+    <input
+      type="password"
+      id="campoSenha"
+      class="modal-input"
+      placeholder="Senha"
+      autocomplete="current-password"
+    />
+    <div class="modal-erro" id="erroSenha"></div>
+    <div class="modal-btns">
+      <button class="modal-btn-confirm" id="btnConfirmarSenha">Confirmar</button>
+      <button class="modal-btn-cancel" id="btnCancelarSenha">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     MODAL GERENCIAR FOTOS
+═══════════════════════════════════════════════ -->
+<div class="modal-fotos-overlay" id="modalFotos" style="display:none;">
+  <div class="modal-fotos-box">
+    <div class="modal-fotos-header">
+      <div class="modal-fotos-title">Gerenciar Fotos</div>
+      <button class="modal-fotos-close" id="btnFecharFotos">✕</button>
+    </div>
+
+    <!-- Seleção de categoria -->
+    <p style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#1e1e1e;margin-bottom:.8rem">Categoria da foto</p>
+    <div class="upload-categoria">
+      <button class="cat-btn ativo" data-cat="facial">Facial</button>
+      <button class="cat-btn" data-cat="corporal">Corporal</button>
+      <button class="cat-btn" data-cat="ozonioterapia">Ozonioterapia</button>
+      <button class="cat-btn" data-cat="saude-integrativa">Saúde Integrativa</button>
+    </div>
+
+    <!-- Área de upload -->
+    <div class="upload-area" id="uploadArea">
+      <input type="file" id="inputFotos" accept="image/*" multiple>
+      <div class="upload-icon">✦</div>
+      <div class="upload-text">
+        <strong>Clique para selecionar</strong> ou arraste as fotos aqui<br>
+        <span style="font-size:.72rem;color:#1e1e1e">JPG, PNG, WEBP — Múltiplas fotos permitidas</span>
+      </div>
+    </div>
+
+    <!-- Preview das fotos selecionadas para upload -->
+    <div id="previewNovas" style="display:none;">
+      <p style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem">Fotos selecionadas</p>
+      <div class="fotos-preview-grid" id="previewGrid"></div>
+    </div>
+
+    <!-- Fotos já no site -->
+    <div id="fotosExistentes" style="margin-top:2rem;">
+      <p style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#1e1e1e;margin-bottom:.8rem">Fotos no site</p>
+      <div class="fotos-preview-grid" id="gridExistentes"></div>
+    </div>
+
+    <div class="modal-fotos-salvar">
+      <button class="modal-btn-cancel" id="btnCancelarFotos">Fechar</button>
+      <button class="btn-gold" id="btnSalvarFotos">✦ Adicionar ao Site</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   CONFIGURAÇÕES — ALTERE A SENHA AQUI
+═══════════════════════════════════════════ */
+const SENHA_ADMIN = "franciene2025"; // ← Troque pela senha desejada
+
+/* ═══════════════════════════════════════════
+   ESTADO
+═══════════════════════════════════════════ */
+let adminLogado = false;
+let categoriaSelecionada = "facial";
+let fotosNovas = []; // arquivos selecionados para upload
+
+/* ═══════════════════════════════════════════
+   SISTEMA DE AVALIAÇÕES
+═══════════════════════════════════════════ */
+let notaSelecionada = 0;
+
+// Estrelas interativas
+document.querySelectorAll(".dep-star").forEach(star => {
+  star.addEventListener("mouseover", () => {
+    const v = parseInt(star.dataset.v);
+    document.querySelectorAll(".dep-star").forEach(s => {
+      s.classList.toggle("ativo", parseInt(s.dataset.v) <= v);
+    });
+  });
+  star.addEventListener("mouseleave", () => {
+    document.querySelectorAll(".dep-star").forEach(s => {
+      s.classList.toggle("ativo", parseInt(s.dataset.v) <= notaSelecionada);
+    });
+  });
+  star.addEventListener("click", () => {
+    notaSelecionada = parseInt(star.dataset.v);
+    document.querySelectorAll(".dep-star").forEach(s => {
+      s.classList.toggle("ativo", parseInt(s.dataset.v) <= notaSelecionada);
+    });
+  });
+});
+
+// Contador de caracteres
+document.getElementById("depTexto").addEventListener("input", function() {
+  document.getElementById("depCount").textContent = this.value.length;
+});
+
+// Enviar avaliação
+document.getElementById("btnEnviarDep").addEventListener("click", () => {
+  const nome = document.getElementById("depNome").value.trim();
+  const texto = document.getElementById("depTexto").value.trim();
+  const msg = document.getElementById("depMsg");
+
+  if (!texto) {
+    msg.textContent = "Por favor, escreva sua avaliação antes de enviar.";
+    msg.className = "dep-form-msg erro";
+    return;
+  }
+  if (notaSelecionada === 0) {
+    msg.textContent = "Selecione uma nota com as estrelas acima.";
+    msg.className = "dep-form-msg erro";
+    return;
+  }
+
+  // Gerar estrelas
+  const starsHtml = "⭐".repeat(notaSelecionada);
+  const nomeExib = nome ? `— ${nome}` : "— Paciente";
+
+  // Criar card
+  const card = document.createElement("div");
+  card.className = "dep-card dep-card-new";
+  card.innerHTML = `
+    <div class="stars">${starsHtml}</div>
+    <blockquote>"${texto}"</blockquote>
+    <div class="dep-author">${nomeExib}</div>
+  `;
+
+  // Inserir no topo dos cards
+  const grid = document.getElementById("depCards");
+  grid.insertBefore(card, grid.firstChild);
+
+  // Limpar formulário
+  document.getElementById("depNome").value = "";
+  document.getElementById("depTexto").value = "";
+  document.getElementById("depCount").textContent = "0";
+  notaSelecionada = 0;
+  document.querySelectorAll(".dep-star").forEach(s => s.classList.remove("ativo"));
+
+  msg.textContent = "✦ Obrigada pelo seu depoimento!";
+  msg.className = "dep-form-msg ok";
+  setTimeout(() => { msg.textContent = ""; }, 4000);
+
+  // Scroll suave para o novo card
+  card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+});
+
+
+const navEl = document.getElementById("navbar");
+window.addEventListener("scroll", () => navEl.classList.toggle("scrolled", scrollY > 60));
+
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+hamburger.addEventListener("click", () => mobileMenu.classList.toggle("open"));
+function closeMenu() { mobileMenu.classList.remove("open"); }
+document.addEventListener("click", e => {
+  if (!navEl.contains(e.target)) mobileMenu.classList.remove("open");
+});
+
+/* ═══════════════════════════════════════════
+   REVEAL ON SCROLL
+═══════════════════════════════════════════ */
+const revEls = document.querySelectorAll(".reveal");
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add("visible"), i * 80);
+      revObs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1});
+revEls.forEach(el => revObs.observe(el));
+
+/* ═══════════════════════════════════════════
+   MODAL SENHA
+═══════════════════════════════════════════ */
+const modalSenha    = document.getElementById("modalSenha");
+const campoSenha    = document.getElementById("campoSenha");
+const erroSenha     = document.getElementById("erroSenha");
+const btnGerenciar  = document.getElementById("btnGerenciarFotos");
+const adminBadge    = document.getElementById("adminBadge");
+
+// Abre modal de senha ao clicar no botão
+btnGerenciar.addEventListener("click", () => {
+  if (adminLogado) {
+    abrirModalFotos();
+  } else {
+    abrirModalSenha();
+  }
+});
+
+function abrirModalSenha() {
+  campoSenha.value = "";
+  erroSenha.textContent = "";
+  modalSenha.style.display = "flex";
+  setTimeout(() => campoSenha.focus(), 100);
+}
+
+function fecharModalSenha() {
+  modalSenha.style.display = "none";
+}
+
+document.getElementById("btnConfirmarSenha").addEventListener("click", verificarSenha);
+document.getElementById("btnCancelarSenha").addEventListener("click", fecharModalSenha);
+campoSenha.addEventListener("keydown", e => {
+  if (e.key === "Enter") verificarSenha();
+  if (e.key === "Escape") fecharModalSenha();
+});
+modalSenha.addEventListener("click", e => {
+  if (e.target === modalSenha) fecharModalSenha();
+});
+
+function verificarSenha() {
+  if (campoSenha.value === SENHA_ADMIN) {
+    adminLogado = true;
+    fecharModalSenha();
+    // Ativa modo admin (mostra botões de remoção nas fotos)
+    document.getElementById("resGrid").classList.add("admin-mode");
+    adminBadge.classList.add("visible");
+    abrirModalFotos();
+  } else {
+    erroSenha.textContent = "Senha incorreta. Tente novamente.";
+    campoSenha.value = "";
+    campoSenha.focus();
+    // Shake visual
+    campoSenha.style.borderColor = "#c0392b";
+    setTimeout(() => campoSenha.style.borderColor = "", 1200);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   MODAL GERENCIAR FOTOS
+═══════════════════════════════════════════ */
+const modalFotos = document.getElementById("modalFotos");
+
+function abrirModalFotos() {
+  fotosNovas = [];
+  document.getElementById("previewGrid").innerHTML = "";
+  document.getElementById("previewNovas").style.display = "none";
+  renderizarFotosExistentes();
+  modalFotos.style.display = "flex";
+}
+
+function fecharModalFotos() {
+  modalFotos.style.display = "none";
+}
+
+document.getElementById("btnFecharFotos").addEventListener("click", fecharModalFotos);
+document.getElementById("btnCancelarFotos").addEventListener("click", fecharModalFotos);
+modalFotos.addEventListener("click", e => {
+  if (e.target === modalFotos) fecharModalFotos();
+});
+
+/* Seleção de categoria */
+document.querySelectorAll(".cat-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("ativo"));
+    btn.classList.add("ativo");
+    categoriaSelecionada = btn.dataset.cat;
+  });
+});
+
+/* Upload de fotos */
+const inputFotos = document.getElementById("inputFotos");
+const uploadArea = document.getElementById("uploadArea");
+
+inputFotos.addEventListener("change", e => {
+  processarArquivos(Array.from(e.target.files));
+  inputFotos.value = ""; // reset para permitir re-upload do mesmo arquivo
+});
+
+// Drag and drop
+uploadArea.addEventListener("dragover", e => { e.preventDefault(); uploadArea.classList.add("drag-over"); });
+uploadArea.addEventListener("dragleave", () => uploadArea.classList.remove("drag-over"));
+uploadArea.addEventListener("drop", e => {
+  e.preventDefault();
+  uploadArea.classList.remove("drag-over");
+  processarArquivos(Array.from(e.dataTransfer.files).filter(f => f.type.startsWith("image/")));
+});
+
+function processarArquivos(files) {
+  files.forEach(file => {
+    if (!file.type.startsWith("image/")) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      fotosNovas.push({ src: ev.target.result, categoria: categoriaSelecionada, nome: file.name, legenda: '' });
+      renderizarPreviewNovas();
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function renderizarPreviewNovas() {
+  const grid = document.getElementById("previewGrid");
+  const secao = document.getElementById("previewNovas");
+  grid.innerHTML = "";
+  if (fotosNovas.length === 0) { secao.style.display = "none"; return; }
+  secao.style.display = "block";
+  fotosNovas.forEach((foto, idx) => {
+    const wrap = document.createElement("div");
+    wrap.style.cssText = "display:flex;flex-direction:column;gap:0;";
+    const item = document.createElement("div");
+    item.className = "preview-item";
+    item.innerHTML = `
+      <img src="${foto.src}" alt="Preview">
+      <button class="preview-remove" data-idx="${idx}">✕</button>
+      <div class="preview-cat-label">${labelCategoria(foto.categoria)}</div>
+    `;
+    const legendaWrap = document.createElement("div");
+    legendaWrap.className = "preview-legenda-wrap";
+    legendaWrap.innerHTML = `<textarea class="preview-legenda-input" data-idx="${idx}" placeholder="Escreva uma legenda para esta foto... (opcional)" rows="2">${foto.legenda || ''}</textarea>`;
+    wrap.appendChild(item);
+    wrap.appendChild(legendaWrap);
+    grid.appendChild(wrap);
+  });
+  // Salvar legenda ao digitar
+  grid.querySelectorAll(".preview-legenda-input").forEach(input => {
+    input.addEventListener("input", () => {
+      fotosNovas[parseInt(input.dataset.idx)].legenda = input.value;
+    });
+  });
+  // Remover da fila
+  grid.querySelectorAll(".preview-remove").forEach(btn => {
+    btn.addEventListener("click", () => {
+      fotosNovas.splice(parseInt(btn.dataset.idx), 1);
+      renderizarPreviewNovas();
+    });
+  });
+}
+
+/* Renderiza fotos já no grid do site */
+function renderizarFotosExistentes() {
+  const grid = document.getElementById("gridExistentes");
+  grid.innerHTML = "";
+  const items = document.querySelectorAll("#resGrid .res-item");
+  if (items.length === 0) {
+    grid.innerHTML = `<p style="font-size:.76rem;color:#1e1e1e;grid-column:1/-1">Nenhuma foto adicionada ainda.</p>`;
+    return;
+  }
+  items.forEach((item, idx) => {
+    const img = item.querySelector("img");
+    const cat = item.dataset.categoria || "—";
+    const previewItem = document.createElement("div");
+    previewItem.className = "preview-item";
+    if (img) {
+      previewItem.innerHTML = `<img src="${img.src}" alt="Foto ${idx+1}">`;
+    } else {
+      previewItem.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2rem;opacity:.2">✦</div>`;
+    }
+    previewItem.innerHTML += `
+      <button class="preview-remove" data-item-idx="${idx}" title="Remover esta foto">✕</button>
+      <div class="preview-cat-label">${labelCategoria(cat)}</div>
+    `;
+    grid.appendChild(previewItem);
+  });
+  grid.querySelectorAll(".preview-remove").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const items = document.querySelectorAll("#resGrid .res-item");
+      const idx = parseInt(btn.dataset.itemIdx);
+      if (items[idx]) items[idx].remove();
+      renderizarFotosExistentes();
+    });
+  });
+}
+
+/* Salvar (adicionar fotos ao grid do site) */
+document.getElementById("btnSalvarFotos").addEventListener("click", () => {
+  if (fotosNovas.length === 0) {
+    alert("Selecione pelo menos uma foto para adicionar.");
+    return;
+  }
+  const grid = document.getElementById("resGrid");
+  fotosNovas.forEach(foto => {
+    const item = document.createElement("div");
+    item.className = "res-item";
+    item.dataset.categoria = foto.categoria;
+    item.dataset.id = "foto-" + Date.now() + Math.random();
+    item.innerHTML = `
+      <img src="${foto.src}" alt="${labelCategoria(foto.categoria)}">
+      <div class="res-badge">${labelCategoria(foto.categoria)}</div>
+      <div class="res-overlay">
+        <span>${foto.legenda ? foto.legenda : labelCategoria(foto.categoria)}</span>
+        <small>${foto.legenda ? labelCategoria(foto.categoria) : 'Resultado Real'}</small>
+      </div>
+      <button class="res-remove-btn" title="Remover foto">✕</button>
+    `;
+    // Botão remover direto no grid
+    item.querySelector(".res-remove-btn").addEventListener("click", e => {
+      e.stopPropagation();
+      if (confirm("Remover esta foto do site?")) item.remove();
+    });
+    grid.appendChild(item);
+  });
+  // Aplica admin-mode para mostrar botões de remoção
+  grid.classList.add("admin-mode");
+  fotosNovas = [];
+  renderizarPreviewNovas();
+  renderizarFotosExistentes();
+  fecharModalFotos();
+});
+
+/* Botões de remoção nas fotos placeholder existentes */
+document.querySelectorAll(".res-remove-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    if (confirm("Remover esta foto do site?")) {
+      btn.closest(".res-item").remove();
+    }
+  });
+});
+
+/* Helper */
+function labelCategoria(cat) {
+  const map = {
+    "facial": "Facial",
+    "corporal": "Corporal",
+    "ozonioterapia": "Ozonioterapia",
+    "saude-integrativa": "Saúde Integrativa"
+  };
+  return map[cat] || cat;
+}
+
+/* === EXCLUIR DEPOIMENTOS === */
+function excluirDep(btn) {
+  if (confirm('Excluir este depoimento?')) {
+    btn.closest('.dep-card').remove();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnModo = document.getElementById('btnModoExcluir');
+  if (!btnModo) return;
+
+  btnModo.addEventListener('click', function() {
+    if (document.body.classList.contains('dep-admin-mode')) {
+      // já logado — só alternar visibilidade dos botões
+      document.body.classList.remove('dep-admin-mode');
+      btnModo.textContent = '✦ EXCLUIR DEPOIMENTOS';
+      return;
+    }
+    // Pede senha reutilizando modal existente
+    var ms    = document.getElementById('modalSenha');
+    var campo = document.getElementById('campoSenha');
+    var erro  = document.getElementById('erroSenha');
+    campo.value = ''; erro.textContent = '';
+    ms.style.display = 'flex';
+    var btnConf = document.getElementById('btnConfirmarSenha');
+    var orig = btnConf.onclick;
+    btnConf.onclick = function() {
+      if (campo.value === SENHA_ADMIN) {
+        ms.style.display = 'none';
+        document.body.classList.add('dep-admin-mode');
+        btnModo.textContent = '✦ SAIR DO MODO EXCLUIR';
+        btnConf.onclick = orig;
+      } else {
+        erro.textContent = 'Senha incorreta.';
+        campo.value = ''; campo.focus();
+      }
+    };
+  });
+});
+
+</script>
+</body>
+</html>
